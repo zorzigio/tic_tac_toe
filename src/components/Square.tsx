@@ -1,4 +1,5 @@
 import { SquareValue } from "~/models/Board";
+import { XIcon, OIcon } from "./SVGs";
 
 function Square({ value, onClick }: { value: SquareValue; onClick: () => void }) {
   var classCard = "card ";
@@ -19,7 +20,10 @@ function Square({ value, onClick }: { value: SquareValue; onClick: () => void })
   return (
     <div className="scene">
       <div onClick={onClick} className={classCard}>
-        <div className={classFront}>{value}</div>
+        <div className={classFront}>
+          {value === SquareValue.X && <XIcon fill="hsl(197, 93%, 30%)" />}
+          {value === SquareValue.O && <OIcon fill="hsl(355, 98%, 30%)" />}
+        </div>
         <div className="card__face card__face--back"></div>
       </div>
     </div>

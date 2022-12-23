@@ -4,7 +4,6 @@ import { SquareValue, Status } from "~/models/Board";
 
 export default function TicTacToe() {
   const [squares, setSquares] = useState<SquareValue[]>(Array(9).fill(SquareValue.EMPTY));
-  const [isX, setIsX] = useState(true);
   const [status, setStatus] = useState<Status>(Status.NextX);
 
   function checkStatus(squares: SquareValue[]) {
@@ -32,24 +31,23 @@ export default function TicTacToe() {
       setStatus(Status.Tie);
       return;
     }
-    setStatus(isX ? Status.NextO : Status.NextX);
+    setStatus(status === Status.NextX ? Status.NextO : Status.NextX);
     return;
   }
 
   const handleRestart = () => {
     setSquares(Array(9).fill(SquareValue.EMPTY));
-    setIsX(true);
+    setStatus(Status.NextX);
   };
 
   const handleClick = (i: number) => {
     if (squares[i] !== SquareValue.EMPTY) {
       return;
     }
-    squares[i] = isX ? SquareValue.X : SquareValue.O;
+    squares[i] = status === Status.NextX ? SquareValue.X : SquareValue.O;
     setSquares(squares);
 
     checkStatus(squares);
-    setIsX(!isX);
   };
 
   return (
