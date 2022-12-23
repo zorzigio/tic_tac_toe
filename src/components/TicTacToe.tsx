@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Square from "./Square";
-import { SquareValue, Status } from "~/models/Board";
+import { SquareValue, Status } from "../models/Board";
 
 export default function TicTacToe() {
   const [squares, setSquares] = useState<SquareValue[]>(Array(9).fill(SquareValue.EMPTY));

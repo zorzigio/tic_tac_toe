@@ -1,4 +1,4 @@
-import { SquareValue } from "~/models/Board";
+import { SquareValue } from "../models/Board";
 import { XIcon, OIcon } from "./SVGs";
 
 function Square({ value, onClick }: { value: SquareValue; onClick: () => void }) {
